@@ -20,7 +20,7 @@ public class HelloController {
 
     @GetMapping(value = "/hello")
     public String index(){
-        List<InstanceInfo> instanceInfose = client.getInstancesByVipAddress("192.168.2.50", true);
+        List<InstanceInfo> instanceInfose = client.getInstancesById("host.docker.internal:hello-service:2222");
         if(instanceInfose.isEmpty()){
             logger.info("/hello, host: null");
 
