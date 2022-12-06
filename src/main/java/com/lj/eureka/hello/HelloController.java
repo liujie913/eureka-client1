@@ -20,14 +20,15 @@ public class HelloController {
 
     @GetMapping(value = "/hello")
     public String index(){
+        String name = "";
         List<InstanceInfo> instanceInfose = client.getInstancesById("host.docker.internal:hello-service:2222");
         if(instanceInfose.isEmpty()){
             logger.info("/hello, host: null");
-
         }else {
+            name = instanceInfose.get(0).getHostName();
             logger.info("/hello, host: " + instanceInfose.get(0).getHostName());
         }
-        return "Hello World";
+        return "Hello World" + name;
     }
 
 
